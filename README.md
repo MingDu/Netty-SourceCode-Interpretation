@@ -28,11 +28,10 @@
 4. 内存管理过程, PooledByteBuf 的管理过程.
 
    - PooledByteBuf 概括(进行中).
-
-   - 1.SizeClasses 标准制定者(进行中). 
-
-   - [2.PoolSubpage 共享区域的管理](https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.63/2.PoolSubpage.html)
-
+   - [1.SizeClasses 标准制定者](https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.63/1.SizeClasses.html).
+   - [2.PoolSubpage 共享区域的管理](https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.63/2.PoolSubpage.html).
+   - 3.PoolChunk(进行中).
+   
 5. Handler 的执行过程(未完成).
 
    
