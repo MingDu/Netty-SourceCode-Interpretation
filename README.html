@@ -137,16 +137,6 @@ kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 
 .md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
 code { text-align: left; }
 a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
-#math-inline-preview-content { zoom: 1.1; }
-.MathJax_SVG * { transition: none; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
@@ -165,9 +155,9 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-diagram-panel .messageText { stroke: none !important; }
 .md-diagram-panel .start-state { fill: var(--node-fill); }
 .md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
 .md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
 .md-fences.md-fences-math { font-size: 1em; }
-.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
 .md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
 .md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
 .typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
@@ -210,6 +200,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
 .typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
 
 
 :root {
@@ -629,6 +620,152 @@ img {
   height: auto;
 }
 
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
  :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>README</title>
 </head>
@@ -636,6 +773,6 @@ img {
 <div id='write'  class=''><h1 id='读netty源码'><span>读Netty源码</span></h1><h3 id='一-版本'><span>一. 版本:</span></h3><p><span>	</span><span>Netty Version: 4.1.63</span>
 <span>​</span><span>	</span><span>Doc Version: 1.0.0</span></p><h3 id='二-作者'><span>二. 作者:</span><span>	</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>名称</span></th><th style='text-align:center;' ><span>贡献</span></th><th style='text-align:center;' ><span>联系方式</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>阿杜看源码</span></td><td style='text-align:center;' ><span>中文版本</span></td><td style='text-align:center;' ><a href=''><span>@阿杜看源码</span></a><span> </span><img src="./netty_4.1.63/images/weixin.png" alt="二维码" style="zoom:15%;" /></td></tr></tbody></table></figure><h3 id='三-介绍'><span>三. 介绍:</span></h3><p><span>	</span><span>本文主要讨论Netty的Server主体框架, PipeLine处理流程, ByteBuf空间管理及一些示例的Handler.</span>
 <span>​</span><span>	</span><span>从源码细节到大体的流程梳理, 希望通过图示的方式能把Netty的大体运行说清楚, 图意在基于UML 2的规范, 但还是有很多场景没找到对应的示例, 还请多提意见. </span>
-<span>​</span><span>	</span><span>有错误及不足的地方还请多指正, 希望能对大家有帮助. </span></p><h3 id='四-内容'><span>四. 内容:</span></h3><ol start='' ><li><p><span>总体介绍(未完成).</span></p></li><li><p><span>服务端与客户端的互动(未完成).</span></p></li><li><p><span>Pipeline 的执行过程(未完成).</span></p></li><li><p><span>内存管理过程, PooledByteBuf 的管理过程.</span></p><ul><li><span>PooledByteBuf 概括(进行中).</span></li><li><a href='https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.63/1.SizeClasses.html'><span>1.SizeClasses 标准制定者</span></a><span>.</span></li><li><a href='https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.63/2.PoolSubpage.html'><span>2.PoolSubpage 共享区域的管理</span></a><span>.</span></li><li><span>3.PoolChunk(进行中).</span></li></ul></li><li><p><span>Handler 的执行过程(未完成).</span></p><p>&nbsp;</p><p><strong><span>注</span></strong><span>: github上不能正常显示公式, 可以下载chrome插件: </span><a href='https://chrome.google.com/webstore/detail/mathax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related'><span>MathJax Plugin for Github</span></a></p></li></ol><h3 id='五-参考'><span>五. 参考:</span></h3><ol start='' ><li><a href='https://github.com/waylau/netty-4-user-guide-demos'><span>Netty案例大全</span></a></li><li><a href='https://blog.csdn.net/cq_pf/article/details/107767775'><span>Netty内存池</span></a></li><li><a href='https://github.com/netty/netty/tree/4.1/buffer/src/test/java/io/netty/buffer'><span>Netty Github上的ByteBuf测试用例</span></a></li></ol><p>&nbsp;</p><h4 id='阿杜看源码所有稿件-未经正式授权一律不得转载出版改编或进行与阿杜看源码版权相关的其他行为违者必究'><span>&quot;阿杜看源码&quot;所有稿件, 未经正式授权一律不得转载、出版、改编，或进行与&quot;阿杜看源码&quot;版权相关的其他行为，违者必究！</span></h4></div></div>
+<span>​</span><span>	</span><span>有错误及不足的地方还请多指正, 希望能对大家有帮助. </span></p><h3 id='四-内容'><span>四. 内容:</span></h3><ol start='' ><li><p><span>总体介绍(未完成).</span></p></li><li><p><span>服务端与客户端的互动(未完成).</span></p></li><li><p><span>Pipeline 的执行过程(未完成).</span></p></li><li><p><span>内存管理过程, PooledByteBuf 的管理过程.</span></p><ul><li><span>PooledByteBuf 概括(进行中).</span></li><li><a href='https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.66/1.SizeClasses.html'><span>1.SizeClasses 标准制定者</span></a><span>.</span></li><li><a href='https://mingdu.github.io/Reading-Netty-SourceCode/netty_4.1.66/2.PoolSubpage.html'><span>2.PoolSubpage 共享区域的管理</span></a><span>.</span></li><li><a href='./netty_4.1.66/3.PoolChunk.html'><span>3.PoolChunk</span></a></li><li><a href='./netty_4.1.66/3.1.LongPriorityQueue.html'><span>3.1.LongPriorityQueue</span></a></li><li><a href='./netty_4.1.66/4.PoolChunkList.html'><span>4.PoolChunkList</span></a></li><li><a href='./netty_4.1.66/5.PoolArena.html'><span>5.PoolArena</span></a></li></ul></li><li><p><span>Handler 的执行过程(未完成).</span></p><p>&nbsp;</p><p><strong><span>注</span></strong><span>: github上不能正常显示公式, 可以下载chrome插件: </span><a href='https://chrome.google.com/webstore/detail/mathax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related'><span>MathJax Plugin for Github</span></a></p></li></ol><h3 id='五-参考'><span>五. 参考:</span></h3><ol start='' ><li><a href='https://github.com/waylau/netty-4-user-guide-demos'><span>Netty案例大全</span></a></li><li><a href='https://blog.csdn.net/cq_pf/article/details/107767775'><span>Netty内存池</span></a></li><li><a href='https://github.com/netty/netty/tree/4.1/buffer/src/test/java/io/netty/buffer'><span>Netty Github上的ByteBuf测试用例</span></a></li></ol><p>&nbsp;</p><h4 id='阿杜看源码所有稿件-未经正式授权一律不得转载出版改编或进行与阿杜看源码版权相关的其他行为违者必究'><span>&quot;阿杜看源码&quot;所有稿件, 未经正式授权一律不得转载、出版、改编，或进行与&quot;阿杜看源码&quot;版权相关的其他行为，违者必究！</span></h4></div></div>
 </body>
 </html>
